@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://2ksp20tva584"]
+
+[ext_resource type="Script" uid="uid://bqgx6584jqb3l" path="res://scenes/Charactor/player.gd" id="1_trqfv"]
+
+[sub_resource type="Gradient" id="Gradient_trqfv"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kbo4x"]
+gradient = SubResource("Gradient_trqfv")
+width = 2
+height = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f573y"]
+size = Vector2(1.5, 1.5)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_trqfv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_kbo4x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f573y")

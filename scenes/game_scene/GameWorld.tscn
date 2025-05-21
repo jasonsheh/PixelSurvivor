@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://rmnegyagcume"]
+
+[ext_resource type="PackedScene" uid="uid://2ksp20tva584" path="res://scenes/Charactor/Player.tscn" id="1_giorh"]
+[ext_resource type="Script" uid="uid://cyampsmpj735l" path="res://scenes/game_scene/game_world.gd" id="1_j3i4x"]
+
+[node name="GameWorld" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j3i4x")
+
+[node name="SpwanTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="BackgroundColor"]
+layout_mode = 0
+offset_left = 572.0
+offset_top = 164.0
+offset_right = 712.0
+offset_bottom = 221.0
+text = "World"
+horizontal_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("1_giorh")]
+position = Vector2(640, 360)
+
+[connection signal="timeout" from="SpwanTimer" to="." method="_on_spwan_timer_timeout"]
