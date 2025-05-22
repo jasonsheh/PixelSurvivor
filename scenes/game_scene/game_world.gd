@@ -1,12 +1,16 @@
 extends Control
 
 var mob_scene: PackedScene = preload("res://scenes/Charactor/Mob.tscn")
+var mob_list: Array = [
+	preload("res://resources/mob/dot.tres")
+]
 
 
 
 func _on_spwan_timer_timeout() -> void:
 	var mob = mob_scene.instantiate()
-
+	mob.state = mob_list[0]
+	
 	var spawn_pos = _get_spawn_position()
 	mob.position = spawn_pos
 

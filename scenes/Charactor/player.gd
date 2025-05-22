@@ -24,3 +24,10 @@ func _ready() -> void:
 
 #func _restore_previous_state() -> void:
 	#self.hp = SaveData.player_data.hp
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+func get_cloest_enemy():
+	pass

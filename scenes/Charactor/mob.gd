@@ -4,12 +4,18 @@ class_name Mob
 
 @onready var player: CharacterBody2D = get_node("../Player")
 
+var state
+var speed: int
+var health: int
+var damage: int
+var experience: int
 
-var speed = 100
-var health = 10
-var damage = 1
-var experience = 0
-var level = 1
+func _ready() -> void:
+	speed = state.speed
+	health = state.health
+	damage = state.damage
+	experience = state.experience
+
 
 func _physics_process(delta):
 	# move_to_player
@@ -23,7 +29,7 @@ func take_damage(amount):
 		queue_free()
 
 
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.name == "Player":
 		player.take_damage(damage)
 		queue_free()
@@ -33,11 +39,6 @@ func get_random_spawn_position():
 	return Vector2(
 		randf_range(-500, 500), randf_range(-300, 300)
 	)
-
-
-func _ready() -> void:
-	pass
-	#_restore_previous_state()
 
 
 

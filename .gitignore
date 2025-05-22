@@ -24,3 +24,5 @@ Exports/
 .DS_Store
 
 addons/
+
+*.uid
