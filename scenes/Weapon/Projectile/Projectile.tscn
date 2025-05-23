@@ -1,16 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://ioksoivt5pf5"]
+[gd_scene load_steps=4 format=3 uid="uid://ioksoivt5pf5"]
 
 [ext_resource type="Script" uid="uid://ciu0lb4kpwp7a" path="res://scenes/Weapon/Projectile/projectile.gd" id="1_fsy7o"]
 [ext_resource type="Texture2D" uid="uid://di57uhouhpo1l" path="res://assets/Sprites/Projectile/Bullets/01.png" id="2_x4lt4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tlu6l"]
-radius = 3.0
-height = 14.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsy7o"]
 size = Vector2(13, 5)
 
-[node name="Projectile" type="CharacterBody2D"]
+[node name="Projectile" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_fsy7o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,10 +15,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_x4lt4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = -1.5708
-shape = SubResource("CapsuleShape2D_tlu6l")
-
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_fsy7o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

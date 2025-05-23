@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_msnrr")
+name = "Mob"
 speed = 100
 health = 10
 damage = 1

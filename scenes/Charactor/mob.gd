@@ -11,6 +11,7 @@ var damage: int
 var experience: int
 
 func _ready() -> void:
+	# name = state.name
 	speed = state.speed
 	health = state.health
 	damage = state.damage

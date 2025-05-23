@@ -28,11 +28,11 @@ texture = SubResource("GradientTexture2D_kbo4x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f573y")
 
-[node name="EnemyDetect" type="Area2D" parent="."]
+[node name="ProjectileSpwan" type="Area2D" parent="."]
 collision_mask = 2
 script = ExtResource("2_kbo4x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetect"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProjectileSpwan"]
 shape = SubResource("CircleShape2D_30282")
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -40,5 +40,5 @@ unique_name_in_owner = true
 wait_time = 0.5
 autostart = true
 
-[connection signal="body_entered" from="EnemyDetect" to="EnemyDetect" method="_on_body_entered"]
-[connection signal="timeout" from="AttackTimer" to="EnemyDetect" method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="ProjectileSpwan" to="ProjectileSpwan" method="_on_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="ProjectileSpwan" method="_on_attack_timer_timeout"]

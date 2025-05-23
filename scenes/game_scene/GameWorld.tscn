@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://rmnegyagcume"]
+[gd_scene load_steps=5 format=3 uid="uid://rmnegyagcume"]
 
 [ext_resource type="PackedScene" uid="uid://2ksp20tva584" path="res://scenes/Charactor/Player.tscn" id="1_giorh"]
 [ext_resource type="Script" uid="uid://cyampsmpj735l" path="res://scenes/game_scene/game_world.gd" id="1_j3i4x"]
+[ext_resource type="Script" uid="uid://cy1c5qwnhhilj" path="res://scenes/game_scene/hp_bar.gd" id="2_ymc5d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymc5d"]
+bg_color = Color(0, 0.400863, 0.889163, 1)
 
 [node name="GameWorld" type="Control"]
 layout_mode = 3
@@ -12,11 +16,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j3i4x")
 
-[node name="SpwanTimer" type="Timer" parent="."]
-autostart = true
+[node name="UI" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="BackgroundColor" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="BackgroundColor" type="ColorRect" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Label" type="Label" parent="BackgroundColor"]
+[node name="Label" type="Label" parent="UI/BackgroundColor"]
 layout_mode = 0
 offset_left = 572.0
 offset_top = 164.0
@@ -33,7 +36,45 @@ offset_bottom = 221.0
 text = "World"
 horizontal_alignment = 1
 
+[node name="HpBar" type="ProgressBar" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -80.0
+offset_right = 78.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+value = 50.0
+show_percentage = false
+script = ExtResource("2_ymc5d")
+
+[node name="ExpBar" type="ProgressBar" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -56.0
+offset_right = 60.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_ymc5d")
+value = 50.0
+show_percentage = false
+script = ExtResource("2_ymc5d")
+
+[node name="SpwanTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="Player" parent="." instance=ExtResource("1_giorh")]
+unique_name_in_owner = true
 position = Vector2(640, 360)
 
 [connection signal="timeout" from="SpwanTimer" to="." method="_on_spwan_timer_timeout"]

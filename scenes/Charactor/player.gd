@@ -2,9 +2,17 @@ extends Charactor
 
 class_name Player
 
+signal health_changed
+signal exp_changed
+
 var speed = 200
-var health = 100
-var experience = 0
+
+# UI相关
+var max_health = 10
+var health = 10
+var max_exp = 120
+var exp = 0
+
 var level = 1
 
 func _physics_process(delta):
@@ -13,6 +21,8 @@ func _physics_process(delta):
 
 func take_damage(amount):
 	health -= amount
+	
+	health_changed.emit()
 	if health <= 0:
 		pass
 
