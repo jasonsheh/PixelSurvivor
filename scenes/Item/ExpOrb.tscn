@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://od6cik6n83md"]
+
+[ext_resource type="Script" uid="uid://5f6noyjdk8tj" path="res://scenes/Item/exp_orb.gd" id="1_domtk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohof2"]
+size = Vector2(10, 10)
+
+[node name="ExpOrb" type="Area2D"]
+script = ExtResource("1_domtk")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+color = Color(0, 1, 1, 1)
+polygon = PackedVector2Array(0, -8, 0, -8, -8, 0, 0, 8, 8, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ohof2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

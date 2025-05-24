@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://rmnegyagcume"]
+[gd_scene load_steps=11 format=3 uid="uid://rmnegyagcume"]
 
-[ext_resource type="PackedScene" uid="uid://2ksp20tva584" path="res://scenes/Charactor/Player.tscn" id="1_giorh"]
-[ext_resource type="Script" uid="uid://cyampsmpj735l" path="res://scenes/game_scene/game_world.gd" id="1_j3i4x"]
-[ext_resource type="Script" uid="uid://cy1c5qwnhhilj" path="res://scenes/game_scene/hp_bar.gd" id="2_ymc5d"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymc5d"]
-bg_color = Color(0, 0.400863, 0.889163, 1)
+[ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/scripts/pause_menu_controller.gd" id="2_wgoga"]
+[ext_resource type="PackedScene" uid="uid://b5cd6sa8qq4vc" path="res://scenes/menus/pause_menu.tscn" id="3_xrhpw"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/scenes/music_players/background_music_player.tscn" id="4_xrhpw"]
+[ext_resource type="Script" uid="uid://crbo2e4ndbyvk" path="res://addons/maaacks_game_template/extras/scripts/level_list_loader.gd" id="5_vl12w"]
+[ext_resource type="Script" uid="uid://ultbh4wcm8t5" path="res://scripts/level_list_state_manager.gd" id="6_gbguy"]
+[ext_resource type="PackedScene" uid="uid://bifqmlemht8b2" path="res://scenes/overlaid_menus/game_won_menu.tscn" id="7_eyr53"]
+[ext_resource type="PackedScene" uid="uid://cvr36eb0r2bje" path="res://scenes/overlaid_menus/level_lost_menu.tscn" id="8_2dugw"]
+[ext_resource type="PackedScene" uid="uid://fi7nwkte06g2" path="res://scenes/overlaid_menus/level_won_menu.tscn" id="9_50uu1"]
+[ext_resource type="PackedScene" uid="uid://dn02kotqcawyw" path="res://scenes/loading_screen/level_loading_screen.tscn" id="10_lsc8k"]
+[ext_resource type="Script" uid="uid://cl3opf2oe8og3" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="11_gbguy"]
 
 [node name="GameWorld" type="Control"]
 layout_mode = 3
@@ -14,67 +18,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_j3i4x")
 
-[node name="UI" type="CanvasLayer" parent="."]
-layer = -1
+[node name="PauseMenuController" type="Node" parent="."]
+script = ExtResource("2_wgoga")
+pause_menu_packed = ExtResource("3_xrhpw")
+metadata/_custom_type_script = "uid://cyh0d64pfygbl"
 
-[node name="BackgroundColor" type="ColorRect" parent="UI"]
+[node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_xrhpw")]
+
+[node name="LevelLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
+script = ExtResource("5_vl12w")
+level_container = NodePath("../ViewportContainer/ConfigurableSubViewport")
+files = Array[String](["res://scenes/game_scene/levels/level_1.tscn"])
+directory = "res://scenes/game_scene/levels"
+
+[node name="LevelListManager" type="Node" parent="." node_paths=PackedStringArray("level_list_loader", "level_loading_screen")]
+script = ExtResource("6_gbguy")
+level_list_loader = NodePath("../LevelLoader")
+main_menu_scene = "uid://4jntiynnieqj"
+ending_scene = "res://scenes/end_credits/end_credits.tscn"
+level_loading_screen = NodePath("../LevelLoadingScreen")
+game_won_scene = ExtResource("7_eyr53")
+level_lost_scene = ExtResource("8_2dugw")
+level_won_scene = ExtResource("9_50uu1")
+
+[node name="LevelLoadingScreen" parent="." instance=ExtResource("10_lsc8k")]
+visible = false
+
+[node name="ViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+stretch = true
 
-[node name="Label" type="Label" parent="UI/BackgroundColor"]
-layout_mode = 0
-offset_left = 572.0
-offset_top = 164.0
-offset_right = 712.0
-offset_bottom = 221.0
-text = "World"
-horizontal_alignment = 1
-
-[node name="HpBar" type="ProgressBar" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -80.0
-offset_right = 78.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-value = 50.0
-show_percentage = false
-script = ExtResource("2_ymc5d")
-
-[node name="ExpBar" type="ProgressBar" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -56.0
-offset_right = 60.0
-offset_bottom = -48.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/fill = SubResource("StyleBoxFlat_ymc5d")
-value = 50.0
-show_percentage = false
-script = ExtResource("2_ymc5d")
-
-[node name="SpwanTimer" type="Timer" parent="."]
-autostart = true
-
-[node name="Player" parent="." instance=ExtResource("1_giorh")]
-unique_name_in_owner = true
-position = Vector2(640, 360)
-
-[connection signal="timeout" from="SpwanTimer" to="." method="_on_spwan_timer_timeout"]
+[node name="ConfigurableSubViewport" type="SubViewport" parent="ViewportContainer"]
+handle_input_locally = false
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+script = ExtResource("11_gbguy")

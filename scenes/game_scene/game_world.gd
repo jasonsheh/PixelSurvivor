@@ -1,10 +1,12 @@
 extends Control
 
+signal level_won
+signal level_lost
+
 var mob_scene: PackedScene = preload("res://scenes/Charactor/Mob.tscn")
 var mob_list: Array = [
 	preload("res://resources/mob/dot.tres")
 ]
-
 
 
 func _on_spwan_timer_timeout() -> void:

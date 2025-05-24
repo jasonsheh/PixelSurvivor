@@ -3,19 +3,20 @@ extends Charactor
 class_name Mob
 
 @onready var player: CharacterBody2D = get_node("../Player")
+@onready var exp_orb_scene = preload("res://scenes/Item/ExpOrb.tscn")
 
 var state
 var speed: int
 var health: int
 var damage: int
-var experience: int
+var exp: int
 
 func _ready() -> void:
 	# name = state.name
 	speed = state.speed
 	health = state.health
 	damage = state.damage
-	experience = state.experience
+	exp = state.exp
 
 
 func _physics_process(delta):
@@ -27,7 +28,14 @@ func _physics_process(delta):
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
+		_on_death()
 		queue_free()
+
+func _on_death():
+	var exp_orb = exp_orb_scene.instantiate()
+	exp_orb.exp = exp
+	exp_orb.global_position = global_position
+	get_parent().call_deferred("add_child", exp_orb)
 
 
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
