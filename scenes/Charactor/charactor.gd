@@ -24,7 +24,7 @@ func _physics_process(_delta: float) -> void:
 	pass
 
 
-func move(delta) -> void:
+func move(_delta) -> void:
 	# velocity.x = move_direction * speed
 	velocity.x += move_direction.x * accerelation
 	velocity.y += move_direction.y * accerelation

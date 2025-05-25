@@ -6,4 +6,4 @@ class_name MobState
 @export var speed: int = 100
 @export var health = 10
 @export var damage = 1
-@export var exp = 1
+@export var experence = 1

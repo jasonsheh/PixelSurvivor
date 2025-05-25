@@ -3,8 +3,8 @@ extends ProgressBar
 @export var smooth_speed := 5.0  # 平滑过渡速度
 @export var flash_duration := 0.2
 
-var _target_ratio := 1.0
-var _flash_timer := 0.0
+# var _target_ratio := 1.0
+# var _flash_timer := 0.0
 
 func _ready():
 	max_value = %Player.max_hp

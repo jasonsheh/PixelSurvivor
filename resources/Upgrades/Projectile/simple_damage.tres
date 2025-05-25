@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dd1ne5k67c62d"]
+
+[ext_resource type="Script" uid="uid://ct8t4d315n5rx" path="res://scripts/Upgrades/ProjectileUpgrade/simple_damage.gd" id="1_snb4i"]
+
+[resource]
+script = ExtResource("1_snb4i")
+name = "simple speed"
+desription = ""

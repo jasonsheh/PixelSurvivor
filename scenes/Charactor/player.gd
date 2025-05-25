@@ -4,16 +4,20 @@ class_name Player
 
 signal hp_changed
 signal exp_changed
-signal level_lost
+
+signal player_upgrade
+
 var speed = 200
 
 # UI相关
-var max_hp = 10
-var hp = 2
-var max_exp = 10
-var exp = 0
+@export var max_hp: int = 10
+@export var hp = 2
+@export var max_exp = 5
+@export var experence = 0
 
-var level = 1
+@export var level = 1
+var player_upgrades = []
+var projectile_upgrades: Array[Upgrade] = []
 
 func _physics_process(delta):
 	var input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -25,7 +29,6 @@ func take_damage(amount):
 	
 	hp_changed.emit()
 	if hp <= 0:
-
 		get_parent().level_lost.emit()
 
 
@@ -38,18 +41,19 @@ func _ready() -> void:
 	#self.hp = SaveData.player_data.hp
 
 func add_exp(e: int):
-	exp += e
+	experence += e
 	exp_changed.emit()
-	if exp >= max_exp:
+	if experence >= max_exp:
 		level_up()
-		exp -= max_exp
+		experence -= max_exp
 
 
 func level_up():
 	level += 1
+	player_upgrade.emit()
+	
 
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
+func _on_hitbox_area_entered(_area: Area2D) -> void:
 	pass # Replace with function body.
 
 func get_cloest_enemy():

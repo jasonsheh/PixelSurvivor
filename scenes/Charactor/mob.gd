@@ -9,14 +9,14 @@ var state
 var speed: int
 var health: int
 var damage: int
-var exp: int
+var experence: int
 
 func _ready() -> void:
 	# name = state.name
 	speed = state.speed
 	health = state.health
 	damage = state.damage
-	exp = state.exp
+	experence = state.experence
 
 
 func _physics_process(delta):
@@ -33,7 +33,7 @@ func take_damage(amount):
 
 func _on_death():
 	var exp_orb = exp_orb_scene.instantiate()
-	exp_orb.exp = exp
+	exp_orb.experence = experence
 	exp_orb.global_position = global_position
 	get_parent().call_deferred("add_child", exp_orb)
 

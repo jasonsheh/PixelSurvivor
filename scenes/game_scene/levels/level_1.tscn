@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnpss81rdulih"]
+[gd_scene load_steps=8 format=3 uid="uid://cnpss81rdulih"]
 
 [ext_resource type="Script" uid="uid://cyampsmpj735l" path="res://scenes/game_scene/game_world.gd" id="1_w6i3l"]
 [ext_resource type="Script" uid="uid://cy1c5qwnhhilj" path="res://scenes/game_scene/UI/hp_bar.gd" id="2_623lg"]
+[ext_resource type="Script" uid="uid://bubasjv4ymsoe" path="res://scenes/game_scene/Upgrade/upgrade_menu_controller.gd" id="2_sycfm"]
+[ext_resource type="PackedScene" uid="uid://cashn75utx25l" path="res://scenes/game_scene/Upgrade/UpgradeChoose.tscn" id="3_pmyid"]
 [ext_resource type="Script" uid="uid://dcwwhin57dnsl" path="res://scenes/game_scene/UI/exp_bar.gd" id="3_sycfm"]
 [ext_resource type="PackedScene" uid="uid://2ksp20tva584" path="res://scenes/Charactor/Player.tscn" id="4_pmyid"]
 
@@ -16,6 +18,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w6i3l")
+
+[node name="UpgradeMenuController" type="Node" parent="."]
+script = ExtResource("2_sycfm")
+pause_menu_packed = ExtResource("3_pmyid")
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = -1

@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://budndbycsaknu"]
+
+[ext_resource type="Script" uid="uid://dsymyckjpe17e" path="res://scripts/Upgrades/ProjectileUpgrade/simple_speed.gd" id="2_6njak"]
+
+[resource]
+script = ExtResource("2_6njak")

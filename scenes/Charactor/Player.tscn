@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://2ksp20tva584"]
 
 [ext_resource type="Script" uid="uid://bqgx6584jqb3l" path="res://scenes/Charactor/player.gd" id="1_trqfv"]
-[ext_resource type="Script" uid="uid://5wqdyaupdg8i" path="res://scenes/Charactor/enemy_detect.gd" id="2_kbo4x"]
+[ext_resource type="Script" uid="uid://5wqdyaupdg8i" path="res://scenes/Charactor/projectile_spwan.gd" id="2_kbo4x"]
 
 [sub_resource type="Gradient" id="Gradient_trqfv"]
 interpolation_mode = 1
@@ -19,7 +19,7 @@ size = Vector2(1.5, 1.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_30282"]
 radius = 200.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_trqfv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
