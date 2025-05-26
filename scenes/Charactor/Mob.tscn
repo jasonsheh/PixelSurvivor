@@ -9,14 +9,14 @@ colors = PackedColorArray(1, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_q36gk"]
 gradient = SubResource("Gradient_m8ojx")
-width = 2
-height = 2
+width = 8
+height = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q36gk"]
-size = Vector2(1.5, 1.5)
+size = Vector2(8, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7h6tc"]
-size = Vector2(2, 2)
+size = Vector2(8, 8)
 
 [node name="Mob" type="CharacterBody2D"]
 collision_layer = 2

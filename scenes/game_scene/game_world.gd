@@ -1,7 +1,7 @@
 extends Control
 
 # signal level_won
-# signal level_lost
+signal level_lost
 
 var mob_scene: PackedScene = preload("res://scenes/Charactor/Mob.tscn")
 var mob_list: Array = [

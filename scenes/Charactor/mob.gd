@@ -2,7 +2,7 @@ extends Charactor
 
 class_name Mob
 
-@onready var player: CharacterBody2D = get_node("../Player")
+@onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
 @onready var exp_orb_scene = preload("res://scenes/Item/ExpOrb.tscn")
 
 var state
