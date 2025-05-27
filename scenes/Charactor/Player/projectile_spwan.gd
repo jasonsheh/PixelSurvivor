@@ -5,7 +5,7 @@ var target_enemy: Mob
 @onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
 var projectile_scene: PackedScene = preload("res://scenes/Weapon/Projectile/Projectile.tscn")
 var projectile_list: Array = [
-	preload("res://resources/mob/dot.tres")
+	preload("res://resources/Projectile/base.tres")
 ]
 
 var near_by_enemy_list: Array = []
@@ -41,6 +41,7 @@ func _on_attack_timer_timeout() -> void:
 		projectile.global_position = get_parent().global_position
 		projectile.target_pos = target_pos
 		
+		projectile.state = projectile_list[0]
 		# 应用投射物升级项
 		for upgrade in player.projectile_upgrades:
 			upgrade.apply_upgrade(projectile)

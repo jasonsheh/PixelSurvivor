@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bfjvi6mavqrbk"]
+
+[ext_resource type="Script" uid="uid://73fl6nu7lvnq" path="res://scripts/Upgrades/ProjectileUpgrade/pierce.gd" id="1_d5a63"]
+
+[resource]
+script = ExtResource("1_d5a63")
+rarity = 2
+name = "Pierce"
+desription = "{}
+投射物穿透次数 +1"
+metadata/_custom_type_script = "uid://dltkf1jft0o8u"

@@ -6,7 +6,7 @@
 script = ExtResource("1_msnrr")
 name = "Mob"
 speed = 100
-health = 10
+health = 2
 damage = 1
-exp = 3
+experence = 1
 metadata/_custom_type_script = "uid://mbf6powxwkm1"

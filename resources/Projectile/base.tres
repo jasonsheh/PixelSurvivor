@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ProjrctileState" load_steps=3 format=3 uid="uid://dykerl6w5sqgf"]
+
+[ext_resource type="Script" uid="uid://dbasl4m5ntq2o" path="res://scripts/projectile_state.gd" id="1_spcib"]
+[ext_resource type="Texture2D" uid="uid://di57uhouhpo1l" path="res://assets/Sprites/Projectile/Bullets/01.png" id="2_efvtb"]
+
+[resource]
+script = ExtResource("1_spcib")
+texture = ExtResource("2_efvtb")
+damage = 1
+speed = 300
+lifetime = 3
+number = 1
+pierce_count = 0
+homing = false
+metadata/_custom_type_script = "uid://dbasl4m5ntq2o"

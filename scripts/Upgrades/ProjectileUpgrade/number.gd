@@ -2,4 +2,4 @@ extends Upgrade
 
 
 func apply_upgrade(projectile: ProjectileBase):
-	projectile.state.speed += 200
+	projectile.state.number += 1

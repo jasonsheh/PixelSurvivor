@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://bubasjv4ymsoe" path="res://scenes/game_scene/Upgrade/upgrade_menu_controller.gd" id="2_sycfm"]
 [ext_resource type="PackedScene" uid="uid://cashn75utx25l" path="res://scenes/game_scene/Upgrade/UpgradeChoose.tscn" id="3_pmyid"]
 [ext_resource type="Script" uid="uid://dcwwhin57dnsl" path="res://scenes/game_scene/UI/exp_bar.gd" id="3_sycfm"]
-[ext_resource type="PackedScene" uid="uid://2ksp20tva584" path="res://scenes/Charactor/Player.tscn" id="4_pmyid"]
+[ext_resource type="PackedScene" uid="uid://2ksp20tva584" path="res://scenes/Charactor/Player/Player.tscn" id="4_pmyid"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsimd"]
 bg_color = Color(0, 0.400863, 0.889163, 1)

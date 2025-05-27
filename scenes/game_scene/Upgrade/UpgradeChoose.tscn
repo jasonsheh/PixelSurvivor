@@ -48,19 +48,63 @@ theme_override_constants/separation = 32
 script = ExtResource("2_2k2fn")
 
 [node name="Upgrade1" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Lose"
+text = "{}
+投射物伤害 +1"
+
+[node name="Label1" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade1"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 30.0
+offset_right = 40.0
+offset_bottom = 53.0
+grow_horizontal = 2
 
 [node name="Upgrade2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Win"
+text = "{}
+投射物速度 +100"
 
-[node name="Upgeade3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 30.0
+offset_right = 40.0
+offset_bottom = 53.0
+grow_horizontal = 2
+text = "simple speed"
+
+[node name="Upgrade3" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Lose"
+text = "{}
+投射物穿透次数 +1"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade3"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 30.0
+offset_right = 40.0
+offset_bottom = 53.0
+grow_horizontal = 2
+text = "Pierce"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -86,4 +130,4 @@ text = "Change Color"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Upgrade1" to="." method="_on_upgrade_1_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Upgrade2" to="." method="_on_upgrade_2_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Upgeade3" to="." method="_on_upgeade_3_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Upgrade3" to="." method="_on_upgeade_3_pressed"]

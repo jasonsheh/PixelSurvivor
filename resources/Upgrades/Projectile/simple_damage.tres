@@ -4,5 +4,7 @@
 
 [resource]
 script = ExtResource("1_snb4i")
+rarity = 0
 name = "simple speed"
-desription = ""
+desription = "{}
+投射物速度 +100"

@@ -6,18 +6,26 @@ var state
 var speed: int = 200
 var damage: int = 5
 var lifetime: int = 2
+var pierce_count: int
+
 var move_direction: Vector2
 var target_pos: Vector2
 
 
+
 func _ready() -> void:
-	# damage = state.damage
-	# position = player_pos
+	set_projectile_state()
 	move_direction = (target_pos - position).normalized()
 	look_at(target_pos)
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()
 
+func set_projectile_state() -> void:
+	speed = state.speed
+	damage = state.damage
+	lifetime = state.lifetime
+	pierce_count = state.pierce_count
+	
 
 func _physics_process(delta):
 	# move_to_player
@@ -28,6 +36,8 @@ func _physics_process(delta):
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
-		queue_free()
+		pierce_count -= 1
+		if pierce_count < 0:
+			queue_free()
 	elif body.name == "Boss":
 		pass

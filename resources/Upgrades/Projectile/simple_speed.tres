@@ -4,3 +4,7 @@
 
 [resource]
 script = ExtResource("2_6njak")
+rarity = null
+name = ""
+desription = "{}
+投射物伤害 +1"
