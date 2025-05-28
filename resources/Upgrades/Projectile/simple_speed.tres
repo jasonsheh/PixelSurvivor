@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("2_6njak")
-rarity = null
-name = ""
+rarity = 0
+name = "投射物速度"
 desription = "{}
-投射物伤害 +1"
+投射物速度 +100"

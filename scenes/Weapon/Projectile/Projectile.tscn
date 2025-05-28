@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://di57uhouhpo1l" path="res://assets/Sprites/Projectile/Bullets/01.png" id="2_x4lt4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsy7o"]
-size = Vector2(13, 5)
+size = Vector2(13, 8)
 
 [node name="Projectile" type="Area2D"]
 collision_mask = 2
@@ -17,4 +17,8 @@ texture = ExtResource("2_x4lt4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fsy7o")
 
+[node name="LifeTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]

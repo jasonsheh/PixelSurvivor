@@ -37,16 +37,25 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 func _on_attack_timer_timeout() -> void:
 	var target_pos = get_closest_target()
 	if target_pos != Vector2():
-		var projectile = projectile_scene.instantiate()
+		var projectile: ProjectileBase = projectile_scene.instantiate()
 		projectile.global_position = get_parent().global_position
 		projectile.target_pos = target_pos
 		
-		projectile.state = projectile_list[0]
+		projectile.state = projectile_list[0].duplicate()
 		# 应用投射物升级项
 		for upgrade in player.projectile_upgrades:
 			upgrade.apply_upgrade(projectile)
-			
+		#print("###")
+		#print(projectile.state.speed, " ",projectile.state.damage, " ", projectile.state.pierce_count)
+		#print(projectile_list[0].speed, " ", projectile_list[0].damage, " ", projectile_list[0].pierce_count)
+		#print("###")
+		projectile.look_at(target_pos)
+		#for i in projectile.state.number:
+			#projectile.position = position + Vector2(i*10,0)
+			#projectile.rotation_degrees = -rotation_degrees
+			#get_parent().get_parent().add_child(projectile)
 		get_parent().get_parent().add_child(projectile)
+
 
 
 #func apply_upgrades(projectile):

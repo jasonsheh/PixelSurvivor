@@ -12,7 +12,7 @@ var speed = 200
 # UI相关
 @export var max_hp: int = 10
 @export var hp = 2
-@export var max_exp = 5
+@export var max_exp = 9
 @export var experence = 0
 
 @export var level = 1
@@ -50,6 +50,14 @@ func add_exp(e: int):
 
 func level_up():
 	level += 1
+	
+	if level <= 15:
+		max_exp = 3 * level + 7
+	elif level <= 30:
+		max_exp = 6 * level - 38
+	else:
+		max_exp = 12 * level - 158
+		
 	player_upgrade.emit()
 	
 

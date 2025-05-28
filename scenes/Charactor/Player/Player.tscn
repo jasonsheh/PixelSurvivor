@@ -25,6 +25,7 @@ radius = 166.003
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_trqfv")
+experence = 8
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_kbo4x")

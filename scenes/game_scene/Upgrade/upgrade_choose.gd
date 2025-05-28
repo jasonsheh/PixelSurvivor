@@ -3,36 +3,74 @@ extends OverlaidMenu
 
 @onready var player: Player = get_tree().get_nodes_in_group("Player")[0]
 var upgrade_number: int = 3
-var projectile_upgrade_normal_list: Array = [
-	preload("res://resources/Upgrades/Projectile/simple_speed.tres"),
-]
-var projectile_upgrade_magic_list: Array = [
-	preload("res://resources/Upgrades/Projectile/simple_damage.tres"),
-]
-var projectile_upgrade_rare_list: Array = [
-	preload("res://resources/Upgrades/Projectile/pierce.tres"),
-]
-var projectile_upgrade_unique_list: Array = [
-	preload("res://resources/Upgrades/Projectile/number.tres"),
-]
 
-# ToDo
+var projectile_upgrade_dict: Dictionary = {
+	"normal": [
+		preload("res://resources/Upgrades/Projectile/simple_speed.tres"),
+	], 
+	"magic": [
+		preload("res://resources/Upgrades/Projectile/simple_damage.tres"),
+	], 
+	"rare": [
+		preload("res://resources/Upgrades/Projectile/pierce.tres"),
+	], 
+	"unique": [
+		preload("res://resources/Upgrades/Projectile/number.tres"),
+	], 
+}
+
+var player_upgrade_dict: Dictionary = {
+	"normal": [], 
+	"magic": [], 
+	"rare": [], 
+	"unique": [], 
+}
+
+var enemy_upgrade_dict: Dictionary = {
+	"normal": [], 
+	"magic": [], 
+	"rare": [], 
+	"unique": [], 
+}
+
+
+# 存储现有三个升级项
 var upgrades: Array[Upgrade] = []
 
 
 func _ready() -> void:
+	upgrades.clear()
 	get_upgrade()
 	show_upgrade_info()
 
 
 func get_upgrade() -> void:
 	for i in range(upgrade_number):
-		var rarity: String = Utils.get_random_rarity(GlobalData.Rarity)
-		match rarity:
-			"normal": upgrades.append(projectile_upgrade_normal_list[0])
-			"magic": upgrades.append(projectile_upgrade_magic_list[0])
-			"rare": upgrades.append(projectile_upgrade_rare_list[0])
-			"unique": upgrades.append(projectile_upgrade_unique_list[0])
+		var upgrade_choice = randi_range(0, 2)
+		upgrade_choice = 0
+		if upgrade_choice == 0:
+			get_projectile_upgrade()
+		elif upgrade_choice == 1:
+			get_player_upgrade()
+		else:
+			get_enemy_upgrade()
+		
+
+func get_player_upgrade() -> void:
+	var rarity: String = Utils.get_random_rarity(GlobalData.Rarity)
+	var choice: int = randi_range(0, player_upgrade_dict[rarity].size()-1)
+	upgrades.append(player_upgrade_dict[rarity][choice])
+
+func get_projectile_upgrade() -> void:
+	var rarity: String = Utils.get_random_rarity(GlobalData.Rarity)
+	var choice: int = randi_range(0, projectile_upgrade_dict[rarity].size()-1)
+	upgrades.append(projectile_upgrade_dict[rarity][choice])
+
+
+func get_enemy_upgrade() -> void:
+	var rarity: String = Utils.get_random_rarity(GlobalData.Rarity)
+	var choice: int = randi_range(0, enemy_upgrade_dict[rarity].size()-1)
+	upgrades.append(enemy_upgrade_dict[rarity][choice])
 
 
 func show_upgrade_info() -> void:
@@ -56,6 +94,6 @@ func _on_upgrade_2_pressed() -> void:
 	close()
 
 
-func _on_upgeade_3_pressed() -> void:
+func _on_upgrade_3_pressed() -> void:
 	player.projectile_upgrades.append(upgrades[2])
 	close()
