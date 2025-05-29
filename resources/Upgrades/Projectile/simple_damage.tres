@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_snb4i")
-rarity = 0
-name = "simple speed"
+rarity = "magic"
+type = "projectile"
+name = "投射物伤害"
 desription = "{}
 投射物伤害 +1"

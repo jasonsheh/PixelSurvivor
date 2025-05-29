@@ -20,7 +20,9 @@ var projectile_upgrade_dict: Dictionary = {
 }
 
 var player_upgrade_dict: Dictionary = {
-	"normal": [], 
+	"normal": [
+		preload("res://resources/Upgrades/Player/player_speed.tres"),
+	], 
 	"magic": [], 
 	"rare": [], 
 	"unique": [], 
@@ -46,8 +48,8 @@ func _ready() -> void:
 
 func get_upgrade() -> void:
 	for i in range(upgrade_number):
-		var upgrade_choice = randi_range(0, 2)
-		upgrade_choice = 0
+		var upgrade_choice = randi_range(0, 1)
+		# var upgrade_choice = randi_range(0, upgrade_number-1)
 		if upgrade_choice == 0:
 			get_projectile_upgrade()
 		elif upgrade_choice == 1:
@@ -58,6 +60,7 @@ func get_upgrade() -> void:
 
 func get_player_upgrade() -> void:
 	var rarity: String = Utils.get_random_rarity(GlobalData.Rarity)
+	rarity =  "normal"
 	var choice: int = randi_range(0, player_upgrade_dict[rarity].size()-1)
 	upgrades.append(player_upgrade_dict[rarity][choice])
 
@@ -65,7 +68,6 @@ func get_projectile_upgrade() -> void:
 	var rarity: String = Utils.get_random_rarity(GlobalData.Rarity)
 	var choice: int = randi_range(0, projectile_upgrade_dict[rarity].size()-1)
 	upgrades.append(projectile_upgrade_dict[rarity][choice])
-
 
 func get_enemy_upgrade() -> void:
 	var rarity: String = Utils.get_random_rarity(GlobalData.Rarity)
@@ -85,15 +87,36 @@ func show_upgrade_info() -> void:
 
 
 func _on_upgrade_1_pressed() -> void:
-	player.projectile_upgrades.append(upgrades[0])
+	if upgrades[0].type == "projectile":
+		player.projectile_upgrades.append(upgrades[0])
+	elif upgrades[0].type == "player":
+		player.player_upgrades.append(upgrades[0])
+		player.apply_upgrades()
+	elif upgrades[0].type == "enemy":
+		player.enemy_upgrades.append(upgrades[0])
+		
 	close()
 
 
 func _on_upgrade_2_pressed() -> void:
-	player.projectile_upgrades.append(upgrades[1])
+	if upgrades[1].type == "projectile":
+		player.projectile_upgrades.append(upgrades[1])
+	elif upgrades[1].type == "player":
+		player.player_upgrades.append(upgrades[1])
+		player.apply_upgrades()
+	elif upgrades[1].type == "enemy":
+		player.enemy_upgrades.append(upgrades[1])
+		
 	close()
 
 
 func _on_upgrade_3_pressed() -> void:
-	player.projectile_upgrades.append(upgrades[2])
+	if upgrades[2].type == "projectile":
+		player.projectile_upgrades.append(upgrades[2])
+	elif upgrades[2].type == "player":
+		player.player_upgrades.append(upgrades[2])
+		player.apply_upgrades()
+	elif upgrades[2].type == "enemy":
+		player.enemy_upgrades.append(upgrades[2])
+		
 	close()

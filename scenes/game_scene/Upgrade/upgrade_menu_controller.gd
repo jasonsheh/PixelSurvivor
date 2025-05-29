@@ -8,10 +8,10 @@ extends Node
 # @export var focused_viewport : Viewport
 
 func _ready() -> void:
-	%Player.player_upgrade.connect(_on_player_upgrade)
+	%Player.player_level_up.connect(_on_player_level_up)
 
 
-func _on_player_upgrade() -> void:
+func _on_player_level_up() -> void:
 	var current_menu = pause_menu_packed.instantiate()
 	get_tree().current_scene.call_deferred("add_child", current_menu)
 	await current_menu.tree_exited

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://btroscy27te60"]
+
+[ext_resource type="Script" uid="uid://c81rk8vdsugcy" path="res://scripts/Upgrades/PlayerUpgrade/player_speed.gd" id="1_4eu5r"]
+
+[resource]
+script = ExtResource("1_4eu5r")
+rarity = "normal"
+type = "player"
+name = "移动速度"
+desription = "{}
+player movement speed +100"
+metadata/_custom_type_script = "uid://dltkf1jft0o8u"

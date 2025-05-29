@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("2_6njak")
-rarity = 0
+rarity = "normal"
+type = "projectile"
 name = "投射物速度"
 desription = "{}
 投射物速度 +100"

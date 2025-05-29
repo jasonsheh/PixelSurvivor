@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_d5a63")
-rarity = 2
+rarity = "rare"
+type = "projectile"
 name = "Pierce"
 desription = "{}
 投射物穿透次数 +1"

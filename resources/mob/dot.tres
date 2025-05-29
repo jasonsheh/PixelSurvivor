@@ -8,5 +8,5 @@ name = "Mob"
 speed = 100
 health = 2
 damage = 1
-experence = 1
+experence = 3
 metadata/_custom_type_script = "uid://mbf6powxwkm1"

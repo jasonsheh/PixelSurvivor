@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnpss81rdulih"]
+[gd_scene load_steps=11 format=3 uid="uid://cnpss81rdulih"]
 
 [ext_resource type="Script" uid="uid://cyampsmpj735l" path="res://scenes/game_scene/game_world.gd" id="1_w6i3l"]
 [ext_resource type="Script" uid="uid://cy1c5qwnhhilj" path="res://scenes/game_scene/UI/hp_bar.gd" id="2_623lg"]
@@ -6,9 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://cashn75utx25l" path="res://scenes/game_scene/Upgrade/UpgradeChoose.tscn" id="3_pmyid"]
 [ext_resource type="Script" uid="uid://dcwwhin57dnsl" path="res://scenes/game_scene/UI/exp_bar.gd" id="3_sycfm"]
 [ext_resource type="PackedScene" uid="uid://2ksp20tva584" path="res://scenes/Charactor/Player/Player.tscn" id="4_pmyid"]
+[ext_resource type="Script" uid="uid://br4jej1so1n4q" path="res://scenes/game_scene/UI/playtime.gd" id="6_pmyid"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bsimd"]
 bg_color = Color(0, 0.400863, 0.889163, 1)
+
+[sub_resource type="Gradient" id="Gradient_sycfm"]
+colors = PackedColorArray(0, 1, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pmyid"]
+gradient = SubResource("Gradient_sycfm")
+width = 10
 
 [node name="Level1" type="Control"]
 layout_mode = 3
@@ -76,6 +84,33 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_bsimd")
 show_percentage = false
 script = ExtResource("3_sycfm")
 
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -136.0
+offset_top = 25.0
+offset_bottom = 90.0
+grow_horizontal = 0
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Playtime" type="Label" parent="UI/VBoxContainer"]
+layout_mode = 2
+text = "Time: %02d:%02d"
+horizontal_alignment = 1
+script = ExtResource("6_pmyid")
+
+[node name="Timer" type="Timer" parent="UI/VBoxContainer/Playtime"]
+autostart = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_pmyid")
+
 [node name="SpwanTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -84,4 +119,5 @@ autostart = true
 unique_name_in_owner = true
 position = Vector2(640, 360)
 
+[connection signal="timeout" from="UI/VBoxContainer/Playtime/Timer" to="UI/VBoxContainer/Playtime" method="_on_timer_timeout"]
 [connection signal="timeout" from="SpwanTimer" to="." method="_on_spwan_timer_timeout"]

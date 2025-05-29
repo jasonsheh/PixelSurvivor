@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_gf0g0")
-rarity = 3
+rarity = "unique"
+type = "projectile"
 name = "投射物数量"
 desription = "Unique
 投射物数量 +1"
