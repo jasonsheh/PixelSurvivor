@@ -1,16 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4o4pi8wvpwn7"]
 
-[ext_resource type="Script" uid="uid://bwdyc1uf40uew" path="res://scenes/Charactor/mob.gd" id="1_q36gk"]
-
-[sub_resource type="Gradient" id="Gradient_m8ojx"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q36gk"]
-gradient = SubResource("Gradient_m8ojx")
-width = 8
-height = 8
+[ext_resource type="Script" uid="uid://bwdyc1uf40uew" path="res://scenes/Charactor/enemy.gd" id="1_fjio4"]
+[ext_resource type="Texture2D" uid="uid://bh1cbbq2jh7nf" path="res://assets/Sprites/Enemy/Enemy-dot.png" id="2_d1veo"]
+[ext_resource type="Environment" uid="uid://0r5gdpq343xb" path="res://assets/Effect/EnemyGlow.tres" id="2_fjio4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q36gk"]
 size = Vector2(8, 8)
@@ -18,22 +10,29 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7h6tc"]
 size = Vector2(8, 8)
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
-script = ExtResource("1_q36gk")
+script = ExtResource("1_fjio4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_q36gk")
+texture = ExtResource("2_d1veo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 light_mask = 2
 shape = SubResource("RectangleShape2D_q36gk")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 light_mask = 2
 shape = SubResource("RectangleShape2D_7h6tc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_fjio4")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

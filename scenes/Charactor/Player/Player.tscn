@@ -1,18 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://2ksp20tva584"]
+[gd_scene load_steps=8 format=3 uid="uid://2ksp20tva584"]
 
 [ext_resource type="Script" uid="uid://bqgx6584jqb3l" path="res://scenes/Charactor/Player/player.gd" id="1_trqfv"]
+[ext_resource type="Texture2D" uid="uid://dngg8p4tqwy7y" path="res://assets/Sprites/Player.png" id="2_74hlf"]
 [ext_resource type="Script" uid="uid://5wqdyaupdg8i" path="res://scenes/Charactor/Player/projectile_spwan.gd" id="2_kbo4x"]
 [ext_resource type="Script" uid="uid://bfs8c6pow3yu6" path="res://scenes/Charactor/Player/item_detect.gd" id="3_30282"]
-
-[sub_resource type="Gradient" id="Gradient_trqfv"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kbo4x"]
-gradient = SubResource("Gradient_trqfv")
-width = 8
-height = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f573y"]
 size = Vector2(8, 8)
@@ -26,8 +17,11 @@ radius = 166.003
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_trqfv")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_kbo4x")
+texture = ExtResource("2_74hlf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f573y")

@@ -1,7 +1,7 @@
 class_name GlobalData
 extends Node
 
-static var Rarity: Dictionary = {
+static var Rarity: Dictionary[String, int] = {
 	"normal": 50,
 	"magic": 30,
 	"rare": 15,

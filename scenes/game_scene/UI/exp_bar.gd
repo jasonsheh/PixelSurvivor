@@ -24,4 +24,4 @@ func _ready():
 		#_flash_timer = flash_duration
 
 func _on_exp_changed():
-	value = %Player.experence
+	value = %Player.experience

@@ -1,6 +1,6 @@
 extends Charactor
 
-class_name Mob
+class_name Enemy
 
 @onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
 @onready var exp_orb_scene = preload("res://scenes/Item/ExpOrb.tscn")
@@ -9,15 +9,16 @@ var state
 var speed: int
 var health: int
 var damage: int
-var experence: int
+var experience: int
 
 func _ready() -> void:
+	$Sprite2D.texture = state.shape
 	# name = state.name
 	speed = state.speed
 	health = state.health
 	damage = state.damage
-	experence = state.experence
-
+	experience = state.experience
+	# $WorldEnvironment.environment.glow_enabled = true
 
 func _physics_process(delta):
 	# move_to_player
@@ -33,7 +34,7 @@ func take_damage(amount):
 
 func _on_death():
 	var exp_orb = exp_orb_scene.instantiate()
-	exp_orb.experence = experence
+	exp_orb.experience = experience
 	exp_orb.global_position = global_position
 	get_parent().call_deferred("add_child", exp_orb)
 

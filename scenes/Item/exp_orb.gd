@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var player: CharacterBody2D = get_node("../Player")
 
-var experence: int
+var experience: int
 var speed: int = 400
 var is_player_entered: bool = false
 
@@ -14,12 +14,12 @@ func _physics_process(delta):
 
 
 func set_experience(new_exp: int):
-	experence = new_exp
+	experience = new_exp
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
-		player.add_exp(experence)
+		player.add_exp(experience)
 		queue_free()
 
 

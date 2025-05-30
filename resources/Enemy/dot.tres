@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyBase" load_steps=3 format=3 uid="uid://cr2ti0xr5r61x"]
+
+[ext_resource type="Script" uid="uid://dlmobqp7hfci4" path="res://scripts/Enemy/EnemyBase.gd" id="1_sqbqv"]
+[ext_resource type="Texture2D" uid="uid://bh1cbbq2jh7nf" path="res://assets/Sprites/Enemy/Enemy-dot.png" id="2_oy3ku"]
+
+[resource]
+script = ExtResource("1_sqbqv")
+shape = ExtResource("2_oy3ku")
+name = "Dot"
+speed = 100
+health = 2
+damage = 1
+experience = 1
+metadata/_custom_type_script = "uid://mbf6powxwkm1"

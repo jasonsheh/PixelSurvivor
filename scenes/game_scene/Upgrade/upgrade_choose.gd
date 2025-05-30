@@ -4,7 +4,7 @@ extends OverlaidMenu
 @onready var player: Player = get_tree().get_nodes_in_group("Player")[0]
 var upgrade_number: int = 3
 
-var projectile_upgrade_dict: Dictionary = {
+var projectile_upgrade_dict: Dictionary[String, Array] = {
 	"normal": [
 		preload("res://resources/Upgrades/Projectile/simple_speed.tres"),
 	], 
@@ -19,7 +19,7 @@ var projectile_upgrade_dict: Dictionary = {
 	], 
 }
 
-var player_upgrade_dict: Dictionary = {
+var player_upgrade_dict: Dictionary[String, Array] = {
 	"normal": [
 		preload("res://resources/Upgrades/Player/player_speed.tres"),
 	], 
@@ -28,7 +28,7 @@ var player_upgrade_dict: Dictionary = {
 	"unique": [], 
 }
 
-var enemy_upgrade_dict: Dictionary = {
+var enemy_upgrade_dict: Dictionary[String, Array] = {
 	"normal": [], 
 	"magic": [], 
 	"rare": [], 
@@ -38,7 +38,8 @@ var enemy_upgrade_dict: Dictionary = {
 
 # 存储现有三个升级项
 var upgrades: Array[Upgrade] = []
-
+@onready var upgrade_buttons: Array = [%Upgrade1, %Upgrade2, %Upgrade3]
+@onready var upgrade_labels: Array = [%Label1, %Label2, %Label3]
 
 func _ready() -> void:
 	upgrades.clear()
@@ -76,47 +77,18 @@ func get_enemy_upgrade() -> void:
 
 
 func show_upgrade_info() -> void:
-	%Label1.text = upgrades[0].name
-	%Upgrade1.text = upgrades[0].desription
-	
-	%Label2.text = upgrades[1].name
-	%Upgrade2.text = upgrades[1].desription
-	
-	%Label3.text = upgrades[2].name
-	%Upgrade3.text = upgrades[2].desription
+	for i in range(upgrade_number):
+		upgrade_labels[i].text = upgrades[i].name
+		upgrade_buttons[i].text = upgrades[i].desription
 
 
-func _on_upgrade_1_pressed() -> void:
-	if upgrades[0].type == "projectile":
-		player.projectile_upgrades.append(upgrades[0])
-	elif upgrades[0].type == "player":
-		player.player_upgrades.append(upgrades[0])
+func _on_upgrade_pressed(arg: int) -> void:
+	if upgrades[arg].type == "projectile":
+		player.projectile_upgrades.append(upgrades[arg])
+	elif upgrades[arg].type == "player":
+		player.player_upgrades.append(upgrades[arg])
 		player.apply_upgrades()
-	elif upgrades[0].type == "enemy":
-		player.enemy_upgrades.append(upgrades[0])
-		
-	close()
-
-
-func _on_upgrade_2_pressed() -> void:
-	if upgrades[1].type == "projectile":
-		player.projectile_upgrades.append(upgrades[1])
-	elif upgrades[1].type == "player":
-		player.player_upgrades.append(upgrades[1])
-		player.apply_upgrades()
-	elif upgrades[1].type == "enemy":
-		player.enemy_upgrades.append(upgrades[1])
-		
-	close()
-
-
-func _on_upgrade_3_pressed() -> void:
-	if upgrades[2].type == "projectile":
-		player.projectile_upgrades.append(upgrades[2])
-	elif upgrades[2].type == "player":
-		player.player_upgrades.append(upgrades[2])
-		player.apply_upgrades()
-	elif upgrades[2].type == "enemy":
-		player.enemy_upgrades.append(upgrades[2])
+	elif upgrades[arg].type == "enemy":
+		player.enemy_upgrades.append(upgrades[arg])
 		
 	close()

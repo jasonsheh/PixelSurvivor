@@ -7,3 +7,5 @@ func _ready() -> void:
 	var anti_aliasing : int = Config.get_config(video_section, anti_aliasing_key, Viewport.MSAA_DISABLED)
 	msaa_2d = anti_aliasing as MSAA
 	msaa_3d = anti_aliasing as MSAA
+	
+	use_hdr_2d = true

@@ -3,23 +3,22 @@ extends Control
 # signal level_won
 signal level_lost
 
-var mob_scene: PackedScene = preload("res://scenes/Charactor/Mob.tscn")
-var mob_list: Array = [
-	preload("res://resources/mob/dot.tres")
+var enemy_scene: PackedScene = preload("res://scenes/Charactor/enemy.tscn")
+var enemy_list: Array = [
+	preload("res://resources/enemy/dot.tres"),
+	preload("res://resources/Enemy/square.tres"),
 ]
 
 
 func _on_spwan_timer_timeout() -> void:
-	var mob = mob_scene.instantiate()
-	mob.state = mob_list[0]
+	var enemy = enemy_scene.instantiate()
+	enemy.state = enemy_list[0]
 	
 	var spawn_pos = _get_spawn_position()
-	mob.position = spawn_pos
+	enemy.position = spawn_pos
 
-	#var movement = mob.get_node("Movement")
-	#mob.set_speed(100)
 
-	add_child(mob)
+	add_child(enemy)
 
 
 func _get_spawn_position() -> Vector2i:

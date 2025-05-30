@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="EnemyBase" load_steps=3 format=3 uid="uid://c02l8t56ku3af"]
+
+[ext_resource type="Script" uid="uid://dlmobqp7hfci4" path="res://scripts/Enemy/EnemyBase.gd" id="1_ry7ey"]
+[ext_resource type="Texture2D" uid="uid://cbyowmec3yvxd" path="res://assets/Sprites/Enemy/Square.png" id="2_d7kgh"]
+
+[resource]
+script = ExtResource("1_ry7ey")
+shape = ExtResource("2_d7kgh")
+name = ""
+speed = 100
+health = 10
+damage = 1
+experience = 1
