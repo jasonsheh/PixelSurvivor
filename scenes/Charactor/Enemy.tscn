@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4o4pi8wvpwn7"]
 
 [ext_resource type="Script" uid="uid://bwdyc1uf40uew" path="res://scenes/Charactor/enemy.gd" id="1_fjio4"]
-[ext_resource type="Texture2D" uid="uid://bh1cbbq2jh7nf" path="res://assets/Sprites/Enemy/Enemy-dot.png" id="2_d1veo"]
+[ext_resource type="Texture2D" uid="uid://dqxrofomit2so" path="res://assets/Sprites/Enemy/circle-red.png" id="2_d1veo"]
 [ext_resource type="Environment" uid="uid://0r5gdpq343xb" path="res://assets/Effect/EnemyGlow.tres" id="2_fjio4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q36gk"]
@@ -15,15 +15,15 @@ collision_layer = 2
 script = ExtResource("1_fjio4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, 1.19209e-07)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_d1veo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 light_mask = 2
 shape = SubResource("RectangleShape2D_q36gk")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -32,7 +32,5 @@ shape = SubResource("RectangleShape2D_7h6tc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_fjio4")
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

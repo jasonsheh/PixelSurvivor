@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="EnemyBase" load_steps=3 format=3 uid="uid://c02l8t56ku3af"]
+[gd_resource type="Resource" script_class="EnemyState" load_steps=2 format=3 uid="uid://c02l8t56ku3af"]
 
-[ext_resource type="Script" uid="uid://dlmobqp7hfci4" path="res://scripts/Enemy/EnemyBase.gd" id="1_ry7ey"]
-[ext_resource type="Texture2D" uid="uid://cbyowmec3yvxd" path="res://assets/Sprites/Enemy/Square.png" id="2_d7kgh"]
+[ext_resource type="Script" uid="uid://mbf6powxwkm1" path="res://scripts/Enemy/enemy_state.gd" id="1_krpm5"]
 
 [resource]
-script = ExtResource("1_ry7ey")
-shape = ExtResource("2_d7kgh")
-name = ""
+script = ExtResource("1_krpm5")
+name = "Square"
 speed = 100
 health = 10
 damage = 1

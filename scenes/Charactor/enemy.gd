@@ -12,7 +12,6 @@ var damage: int
 var experience: int
 
 func _ready() -> void:
-	$Sprite2D.texture = state.shape
 	# name = state.name
 	speed = state.speed
 	health = state.health

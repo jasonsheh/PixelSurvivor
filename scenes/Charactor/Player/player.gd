@@ -8,7 +8,7 @@ signal exp_changed
 signal player_level_up
 
 # 初始属性配置
-const INIT_SPEED: int = 200
+const INIT_SPEED: int = 40
 const INIT_PROJECTILE_NUMBER: int = 1
 const INIT_ARMOR: int = 1
 const INIT_MAX_HP: int = 10
@@ -28,8 +28,25 @@ var projectile_upgrades: Array[Upgrade] = []
 var enemy_upgrades: Array[Upgrade] = []
 
 func _physics_process(delta) -> void:
-	var input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	position += input * speed * delta
+	move_and_slide()
+	#velocity = Vector2.ZERO
+	
+	move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	velocity.x += move_direction.x * speed
+	velocity.y += move_direction.y * speed
+	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
+	velocity = clamp(velocity, -MAX_SPEED, MAX_SPEED)
+
+	if abs(velocity.x) < 10:
+		velocity.x = 0
+	if abs(velocity.y) < 10:
+		velocity.y = 0
+		
+	#move_and_collide(velocity)
+	
+	#var move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	#position += move_direction * speed * delta
 
 
 func take_damage(amount) -> void:
@@ -50,8 +67,8 @@ func _ready() -> void:
 func add_exp(e: int) -> void:
 	experience += e
 	if experience >= max_exp:
-		level_up()
 		experience -= max_exp
+		level_up()
 	exp_changed.emit()
 
 
@@ -67,7 +84,6 @@ func level_up() -> void:
 		
 	player_level_up.emit()
 
-
 func apply_upgrades() -> void:
 	# print_player_stat()
 	init_player_stat()
@@ -81,7 +97,6 @@ func init_player_stat() -> void:
 	projectile_number = INIT_PROJECTILE_NUMBER
 	armor = INIT_PROJECTILE_NUMBER
 	
-
 func print_player_stat() -> void:
 	print("#################")
 	print("Speed: ", speed)

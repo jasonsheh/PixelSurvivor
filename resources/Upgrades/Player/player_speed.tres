@@ -8,5 +8,5 @@ rarity = "normal"
 type = "player"
 name = "移动速度"
 desription = "{}
-player movement speed +100"
+player movement speed +5"
 metadata/_custom_type_script = "uid://dltkf1jft0o8u"

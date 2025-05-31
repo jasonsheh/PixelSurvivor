@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://2ksp20tva584"]
+[gd_scene load_steps=9 format=3 uid="uid://2ksp20tva584"]
 
 [ext_resource type="Script" uid="uid://bqgx6584jqb3l" path="res://scenes/Charactor/Player/player.gd" id="1_trqfv"]
+[ext_resource type="Script" uid="uid://bms3ve85gntbu" path="res://scenes/Charactor/Player/playerz_camera.gd" id="2_3ulu1"]
 [ext_resource type="Texture2D" uid="uid://dngg8p4tqwy7y" path="res://assets/Sprites/Player.png" id="2_74hlf"]
 [ext_resource type="Script" uid="uid://5wqdyaupdg8i" path="res://scenes/Charactor/Player/projectile_spwan.gd" id="2_kbo4x"]
 [ext_resource type="Script" uid="uid://bfs8c6pow3yu6" path="res://scenes/Charactor/Player/item_detect.gd" id="3_30282"]
@@ -15,10 +16,13 @@ radius = 200.0
 radius = 166.003
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+motion_mode = 1
+platform_wall_layers = 1
 script = ExtResource("1_trqfv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+script = ExtResource("2_3ulu1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_74hlf")

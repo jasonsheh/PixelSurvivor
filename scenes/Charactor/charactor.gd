@@ -5,8 +5,8 @@ class_name Charactor
 const FRICTION: float = 0.16
 const accerelation: int = 200
 
-var MAX_SPEED: int = 200
-var PLAYER_MAX_SPEED: int = 200
+var MAX_SPEED: Vector2 = Vector2(500, 500)
+var PLAYER_MAX_SPEED: Vector2 = Vector2(500, 500)
 
 #@export var max_hp:int = 100
 #@export var hp:int = 100: set = set_hp
@@ -22,12 +22,6 @@ var move_direction: Vector2 = Vector2.ZERO
 
 func _physics_process(_delta: float) -> void:
 	pass
-
-
-func move(_delta) -> void:
-	# velocity.x = move_direction * speed
-	velocity.x += move_direction.x * accerelation
-	velocity.y += move_direction.y * accerelation
 
 	
 #func take_damage(damage: int, direction: Vector2, force: int) -> void:

@@ -3,20 +3,22 @@ extends Control
 # signal level_won
 signal level_lost
 
-var enemy_scene: PackedScene = preload("res://scenes/Charactor/enemy.tscn")
+var enemy_scene: Array[PackedScene] = [
+	preload("res://scenes/Charactor/Enemy/dot.tscn"),
+	preload("res://scenes/Charactor/Enemy/square.tscn"),
+]
 var enemy_list: Array = [
-	preload("res://resources/enemy/dot.tres"),
+	preload("res://resources/Enemy/dot.tres"),
 	preload("res://resources/Enemy/square.tres"),
 ]
 
 
 func _on_spwan_timer_timeout() -> void:
-	var enemy = enemy_scene.instantiate()
+	var enemy = enemy_scene[0].instantiate()
 	enemy.state = enemy_list[0]
 	
 	var spawn_pos = _get_spawn_position()
 	enemy.position = spawn_pos
-
 
 	add_child(enemy)
 
