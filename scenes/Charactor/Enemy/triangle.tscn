@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c50h0cc1gyodb"]
+
+[ext_resource type="PackedScene" uid="uid://c4o4pi8wvpwn7" path="res://scenes/Charactor/Enemy.tscn" id="1_lpn0p"]
+[ext_resource type="Texture2D" uid="uid://ir670uy33f4t" path="res://assets/Sprites/Enemy/triangle-red.png" id="2_fnj7a"]
+[ext_resource type="Script" uid="uid://cde6ldl4nvwvb" path="res://scenes/Charactor/Enemy/triangle.gd" id="2_ocucg"]
+
+[node name="Triangle" instance=ExtResource("1_lpn0p")]
+script = ExtResource("2_ocucg")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-0.173913, -0.148147)
+scale = Vector2(0.347826, 0.296296)
+texture = ExtResource("2_fnj7a")
+
+[node name="SkillCD" type="Timer" parent="." index="4"]
+wait_time = 4.0
+autostart = true
+
+[connection signal="timeout" from="SkillCD" to="." method="_on_skill_cd_timeout"]

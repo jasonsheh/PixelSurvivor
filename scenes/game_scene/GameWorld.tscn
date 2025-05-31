@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://cyh0d64pfygbl"
 [node name="LevelLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
 script = ExtResource("5_vl12w")
 level_container = NodePath("../ViewportContainer/ConfigurableSubViewport")
-files = Array[String](["res://scenes/game_scene/levels/level_1.tscn"])
+files = Array[String](["res://scenes/game_scene/levels/level.tscn"])
 directory = "res://scenes/game_scene/levels"
 
 [node name="LevelListManager" type="Node" parent="." node_paths=PackedStringArray("level_list_loader", "level_loading_screen")]
