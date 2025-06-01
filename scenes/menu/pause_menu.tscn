@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5cd6sa8qq4vc"]
+[gd_scene load_steps=6 format=3 uid="uid://b5cd6sa8qq4vc"]
 
 [ext_resource type="PackedScene" uid="uid://wny2d8dvp3ok" path="res://addons/maaacks_game_template/base/scenes/overlaid_menu/overlaid_menu.tscn" id="1_gm3uv"]
 [ext_resource type="Script" uid="uid://uidwhqh4fyhj" path="res://scenes/menu/pause_menu.gd" id="2_0ln3r"]
 [ext_resource type="PackedScene" uid="uid://cikf3o5omnunl" path="res://addons/maaacks_game_template/base/scenes/overlaid_menu/menus/mini_options_overlaid_menu.tscn" id="3_kv70e"]
+[ext_resource type="Script" uid="uid://bl6lfbr1m3xac" path="res://scenes/menu/stat_container.gd" id="4_msl3b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xtxec"]
+font_size = 12
 
 [node name="PauseMenu" instance=ExtResource("1_gm3uv")]
 process_mode = 3
@@ -11,38 +15,109 @@ options_packed_scene = ExtResource("3_kv70e")
 main_menu_scene = "uid://4jntiynnieqj"
 pauses_game = true
 
-[node name="MarginContainer" parent="MenuPanelContainer" index="0"]
+[node name="BackgroundColor" parent="." index="0"]
+custom_minimum_size = Vector2(2, 0)
+
+[node name="MenuPanelContainer" parent="." index="1"]
+offset_left = -128.0
+offset_top = -160.0
+offset_right = 128.0
+offset_bottom = 161.0
+
+[node name="UpgradeMargin" type="MarginContainer" parent="MenuPanelContainer/HBoxContainer" index="0"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPanelContainer/HBoxContainer/UpgradeMargin" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="UpgradeTitle" type="Label" parent="MenuPanelContainer/HBoxContainer/UpgradeMargin/VBoxContainer" index="0"]
+layout_mode = 2
+text = "升级项"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="MenuPanelContainer/HBoxContainer/UpgradeMargin/VBoxContainer" index="1"]
+layout_mode = 2
+text = "移动速度增加： 5"
+label_settings = SubResource("LabelSettings_xtxec")
+
+[node name="VScrollBar" type="VScrollBar" parent="MenuPanelContainer/HBoxContainer" index="1"]
+visible = false
+layout_mode = 2
+
+[node name="LVSeparator" type="VSeparator" parent="MenuPanelContainer/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="MarginContainer" parent="MenuPanelContainer/HBoxContainer" index="3"]
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_right = 64
 
-[node name="TitleLabel" parent="MenuPanelContainer/MarginContainer/BoxContainer/TitleMargin" index="0"]
-text = "Paused"
-
-[node name="MenuButtonsMargin" parent="MenuPanelContainer/MarginContainer/BoxContainer" index="2"]
+[node name="MenuButtonsMargin" parent="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer" index="2"]
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="CloseButton" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0"]
-text = "Resume"
-
-[node name="RestartButton" type="Button" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1"]
+[node name="RestartButton" type="Button" parent="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Restart"
 
-[node name="OptionsButton" type="Button" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="2"]
+[node name="OptionsButton" type="Button" parent="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
-[node name="MainMenuButton" type="Button" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="3"]
+[node name="MainMenuButton" type="Button" parent="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Main Menu"
 
-[node name="ExitButton" type="Button" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="4"]
+[node name="ExitButton" type="Button" parent="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="3"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Exit Game"
+
+[node name="RVSeparator" type="VSeparator" parent="MenuPanelContainer/HBoxContainer" index="4"]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+
+[node name="StatMargin" type="MarginContainer" parent="MenuPanelContainer/HBoxContainer" index="5"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
+
+[node name="StatContainer" type="VBoxContainer" parent="MenuPanelContainer/HBoxContainer/StatMargin" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 2
+script = ExtResource("4_msl3b")
+
+[node name="StatTitle" type="Label" parent="MenuPanelContainer/HBoxContainer/StatMargin/StatContainer" index="0"]
+layout_mode = 2
+text = "玩家属性"
+horizontal_alignment = 1
+
+[node name="StatHp" type="Label" parent="MenuPanelContainer/HBoxContainer/StatMargin/StatContainer" index="1"]
+layout_mode = 2
+text = "最大生命值： 100"
+label_settings = SubResource("LabelSettings_xtxec")
+
+[node name="StatHpReGen" type="Label" parent="MenuPanelContainer/HBoxContainer/StatMargin/StatContainer" index="2"]
+layout_mode = 2
+text = "生命回复： 0"
+label_settings = SubResource("LabelSettings_xtxec")
+
+[node name="StatMeleeDamage" type="Label" parent="MenuPanelContainer/HBoxContainer/StatMargin/StatContainer" index="3"]
+layout_mode = 2
+text = "近战伤害： 0"
+label_settings = SubResource("LabelSettings_xtxec")
 
 [node name="ConfirmRestart" type="ConfirmationDialog" parent="." index="2"]
 unique_name_in_owner = true
@@ -59,10 +134,10 @@ unique_name_in_owner = true
 auto_translate_mode = 1
 dialog_text = "Quit the game?"
 
-[connection signal="pressed" from="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="MenuPanelContainer/HBoxContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="confirmed" from="ConfirmRestart" to="." method="_on_confirm_restart_confirmed"]
 [connection signal="confirmed" from="ConfirmMainMenu" to="." method="_on_confirm_main_menu_confirmed"]
 [connection signal="confirmed" from="ConfirmExit" to="." method="_on_confirm_exit_confirmed"]

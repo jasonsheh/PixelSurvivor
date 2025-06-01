@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4o4pi8wvpwn7"]
+[gd_scene load_steps=8 format=3 uid="uid://c4o4pi8wvpwn7"]
 
 [ext_resource type="Script" uid="uid://bwdyc1uf40uew" path="res://scenes/Charactor/enemy.gd" id="1_fjio4"]
 [ext_resource type="Texture2D" uid="uid://dqxrofomit2so" path="res://assets/Sprites/Enemy/circle-red.png" id="2_d1veo"]
 [ext_resource type="Environment" uid="uid://0r5gdpq343xb" path="res://assets/Effect/EnemyGlow.tres" id="2_fjio4"]
+[ext_resource type="Script" uid="uid://b7kmnmbl2f57h" path="res://scenes/Charactor/hurt_marker.gd" id="4_iwoah"]
+[ext_resource type="PackedScene" uid="uid://c3v4jq75qbtc8" path="res://scenes/game_scene/UI/HurtNumber.tscn" id="5_b158x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q36gk"]
 size = Vector2(8, 8)
@@ -13,6 +15,12 @@ size = Vector2(8, 8)
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fjio4")
+
+[node name="HurtMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+script = ExtResource("4_iwoah")
+damage_node = ExtResource("5_b158x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.19209e-07, 1.19209e-07)

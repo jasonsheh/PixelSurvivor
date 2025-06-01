@@ -8,6 +8,7 @@ func _ready() -> void:
 	experience = 2
 	# $WorldEnvironment.environment.glow_enabled = true
 
+# Todo dash indicator
 
 func dash() -> void:
 	var _speed = speed

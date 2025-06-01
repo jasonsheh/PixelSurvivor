@@ -7,7 +7,7 @@
 [node name="Triangle" instance=ExtResource("1_lpn0p")]
 script = ExtResource("2_ocucg")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 position = Vector2(-0.173913, -0.148147)
 scale = Vector2(0.347826, 0.296296)
 texture = ExtResource("2_fnj7a")

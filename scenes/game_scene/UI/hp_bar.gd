@@ -8,6 +8,7 @@ extends ProgressBar
 
 func _ready():
 	max_value = %Player.max_hp
+	$HpLabel.text = "%d / %d" % [value, max_value]
 	%Player.hp_changed.connect(_on_hp_changed)
 
 #func _process(delta):
@@ -25,3 +26,4 @@ func _ready():
 
 func _on_hp_changed():
 	value = %Player.hp
+	$HpLabel.text = "%d / %d" % [value, max_value]

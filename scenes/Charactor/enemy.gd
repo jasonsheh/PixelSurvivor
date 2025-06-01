@@ -39,6 +39,7 @@ func action_pattern() -> void:
 
 func take_damage(amount: int) -> void:
 	health -= amount
+	%HurtMarker.popup(amount)
 	if health <= 0:
 		_on_death()
 		queue_free()

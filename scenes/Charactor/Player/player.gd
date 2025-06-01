@@ -12,6 +12,7 @@ const INIT_SPEED: int = 40
 const INIT_PROJECTILE_NUMBER: int = 1
 const INIT_ARMOR: int = 1
 const INIT_MAX_HP: int = 10
+const INIT_HP_REGEN: int = 1
 const INIT_MAX_EXP: int = 9
 
 @export var speed: int = INIT_SPEED
@@ -19,6 +20,7 @@ const INIT_MAX_EXP: int = 9
 @export var armor: int = INIT_ARMOR
 @export var max_hp: int = INIT_MAX_HP
 @export var hp: int = INIT_MAX_HP
+@export var hp_regen: int = INIT_HP_REGEN
 @export var max_exp: int = INIT_MAX_EXP
 @export var experience: int = 0
 @export var level: int = 1
