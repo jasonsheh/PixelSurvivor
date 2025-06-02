@@ -15,7 +15,7 @@ var target_pos: Vector2
 
 func _ready() -> void:
 	set_projectile_state()
-	move_direction = (target_pos - position).normalized()
+	# move_direction = (target_pos - position).normalized()
 	%LifeTimer.start(lifetime)
 
 
@@ -29,7 +29,7 @@ func set_projectile_state() -> void:
 func _physics_process(delta):
 	# move_to_player
 	# var direction = Vector2.RIGHT.rotated(rotation)
-	position += move_direction * speed * delta
+	position += Vector2.RIGHT.rotated(global_rotation) * speed * delta
 
 
 func _on_body_entered(body: Node2D) -> void:

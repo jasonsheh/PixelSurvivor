@@ -2,7 +2,8 @@ extends Area2D
 
 var target_enemy: Enemy
 
-@onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
+@onready var player: Player = get_tree().get_nodes_in_group("Player")[0]
+
 var projectile_scene: PackedScene = preload("res://scenes/Weapon/Projectile/Projectile.tscn")
 var projectile_list: Array = [
 	preload("res://resources/Projectile/base.tres")
@@ -36,28 +37,34 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 # 生成投射物，generate projectile
 func _on_attack_timer_timeout() -> void:
 	var target_pos = get_closest_target()
+	var arc_degree = player.projectile_number * 20 if player.projectile_number < 8 else 180 
+	var arc_radian =  deg_to_rad(player.projectile_number * 20)
 	if target_pos != Vector2():
-		var projectile: ProjectileBase = projectile_scene.instantiate()
-		projectile.global_position = get_parent().global_position
-		projectile.target_pos = target_pos
-		
-		projectile.state = projectile_list[0].duplicate()
-		# 应用投射物升级项
-		for upgrade in player.projectile_upgrades:
-			upgrade.apply_upgrade(projectile)
-		#print("###")
-		#print(projectile.state.speed, " ",projectile.state.damage, " ", projectile.state.pierce_count)
-		#print(projectile_list[0].speed, " ", projectile_list[0].damage, " ", projectile_list[0].pierce_count)
-		#print("###")
-		projectile.look_at(target_pos)
-		#for i in projectile.state.number:
-			#projectile.position = position + Vector2(i*10,0)
-			#projectile.rotation_degrees = -rotation_degrees
-			#get_parent().get_parent().add_child(projectile)
-		get_parent().get_parent().add_child(projectile)
+		for i in player.projectile_number:
+			var projectile: ProjectileBase = projectile_scene.instantiate()
+			# 投射物位置
+			projectile.global_position = get_parent().global_position
+			projectile.target_pos = target_pos
+			projectile.state = projectile_list[0].duplicate()
+			
+			projectile.look_at(target_pos)
+			if player.projectile_number > 1:
+				# 多投射物角度
+				var incrasment = arc_radian / (player.projectile_number - 1)
+				projectile.global_rotation = (projectile.global_rotation + incrasment * i - arc_radian / 2)
+				
+			
+			# 应用投射物升级项
+			for upgrade in player.projectile_upgrades:
+				upgrade.apply_upgrade(projectile)
 
+			# projectile.look_at(target_pos)
 
+			get_parent().get_parent().add_child(projectile)
+			# get_parent().get_parent().call_deferred("add_child", projectile)
 
-#func apply_upgrades(projectile):
-	#for upgrade in player.projectile_upgrades:
-		#upgrade.apply_upgrade(projectile)
+func debug_print(projectile) -> void:
+		print("###")
+		print(projectile.state.speed, " ",projectile.state.damage, " ", projectile.state.pierce_count)
+		print(projectile_list[0].speed, " ", projectile_list[0].damage, " ", projectile_list[0].pierce_count)
+		print("###")

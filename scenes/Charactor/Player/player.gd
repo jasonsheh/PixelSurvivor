@@ -14,13 +14,20 @@ const INIT_ARMOR: int = 1
 const INIT_MAX_HP: int = 10
 const INIT_HP_REGEN: int = 1
 const INIT_MAX_EXP: int = 9
+const INIT_MAX_LEVEL: int = 50
 
 @export var speed: int = INIT_SPEED
+@export var attack_speed: int = 1
+
+
 @export var projectile_number: int = INIT_PROJECTILE_NUMBER
+
 @export var armor: int = INIT_ARMOR
+
 @export var max_hp: int = INIT_MAX_HP
 @export var hp: int = INIT_MAX_HP
 @export var hp_regen: int = INIT_HP_REGEN
+
 @export var max_exp: int = INIT_MAX_EXP
 @export var experience: int = 0
 @export var level: int = 1
@@ -78,11 +85,11 @@ func level_up() -> void:
 	level += 1
 	# 更新经验需求公式
 	if level <= 15:
-		max_exp = 3 * level + 7
+		max_exp = 5 * level + 7
 	elif level <= 30:
-		max_exp = 6 * level - 38
+		max_exp = 10 * level - 38
 	else:
-		max_exp = 12 * level - 158
+		max_exp = 20 * level - 158
 		
 	player_level_up.emit()
 

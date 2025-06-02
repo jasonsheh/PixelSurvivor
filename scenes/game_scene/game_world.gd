@@ -17,9 +17,9 @@ var stage_enemy_list: Array[int] = []
 func _ready() -> void:
 	spwan_by_stage()
 	
-	$SpwanTimer.wait_time = 1
+	# $SpwanTimer.wait_time = 1
 	
-	$UI/VBoxContainer/Playtime.pharse_changed.connect(spwan_by_stage)
+	$UI/RightContainer/Playtime.pharse_changed.connect(spwan_by_stage)
 
 
 func spwan_by_stage() -> void:

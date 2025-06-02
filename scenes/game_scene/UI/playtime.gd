@@ -28,4 +28,6 @@ func _on_timer_timeout() -> void:
 		$"../../..".stage += 1
 		$"../../..".pharse = 1
 		pharse_changed.emit()
-	
+		
+	if minute != 0 and minute % 2 == 0:
+		$"../DiffcultyBar".value += 1
