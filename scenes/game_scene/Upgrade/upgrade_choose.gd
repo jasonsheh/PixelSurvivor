@@ -38,7 +38,6 @@ var enemy_upgrade_dict: Dictionary[String, Array] = {
 
 # 存储现有三个升级项
 var upgrades: Array[Upgrade] = []
-@onready var upgrade_buttons: Array = [%Upgrade1, %Upgrade2, %Upgrade3]
 @onready var upgrade_labels: Array = [%Label1, %Label2, %Label3]
 
 func _ready() -> void:
@@ -78,8 +77,18 @@ func get_enemy_upgrade() -> void:
 
 func show_upgrade_info() -> void:
 	for i in range(upgrade_number):
-		upgrade_labels[i].text = upgrades[i].name
-		upgrade_buttons[i].text = upgrades[i].desription
+		upgrade_labels[i].text = "
+[center]
+[color={color}][font_size=32]{Name}[/font_size]
+[font_size=22]{rarity}[/font_size][/color]
+
+[font_size=18]{desription}[/font_size]
+[/center]".format(
+			{"Name": upgrades[i].name,
+			"rarity":upgrades[i].rarity,
+			"desription": upgrades[i].desription,
+			"color": GlobalData.rarity_color[upgrades[i].rarity],
+		})
 
 
 func _on_upgrade_pressed(arg: int) -> void:

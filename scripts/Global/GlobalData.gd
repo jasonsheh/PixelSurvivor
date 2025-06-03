@@ -14,3 +14,10 @@ static var rarity_chance: Array = [
 	15,
 	5,
 ]
+
+static var rarity_color: Dictionary[String, String] = {
+	"normal": "ivory",
+	"magic": "dodger_blue",
+	"rare": "gold",
+	"unique": "crimson",
+}
