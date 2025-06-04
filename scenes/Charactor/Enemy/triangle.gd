@@ -2,11 +2,7 @@ extends Enemy
 
 
 func _ready() -> void:
-	speed = 110
-	health = 3
-	damage = 1
-	experience = 2
-	# $WorldEnvironment.environment.glow_enabled = true
+	super._ready()
 
 # Todo dash indicator
 

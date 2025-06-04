@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bpnt302yyqfhq"]
+
+[ext_resource type="Texture2D" uid="uid://d2mpybluc6laf" path="res://assets/Sprites/Icon/heart-plus.png" id="1_hasre"]
+[ext_resource type="Script" uid="uid://na13lhe1j05b" path="res://scripts/Upgrades/PlayerUpgrade/max_hp.gd" id="2_bqgk4"]
+
+[resource]
+script = ExtResource("2_bqgk4")
+icon = ExtResource("1_hasre")
+rarity = "magic"
+type = "player"
+name = "Max Hp"
+desription = "最大生命值 +5"
+metadata/_custom_type_script = "uid://dltkf1jft0o8u"

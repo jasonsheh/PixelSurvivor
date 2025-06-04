@@ -2,7 +2,7 @@ extends Charactor
 
 class_name Enemy
 
-@onready var player: CharacterBody2D = get_tree().get_nodes_in_group("Player")[0]
+@onready var player: Player = get_tree().get_nodes_in_group("Player")[0]
 @onready var exp_orb_scene = preload("res://scenes/Item/ExpOrb.tscn")
 
 var state = {
@@ -25,6 +25,7 @@ func _ready() -> void:
 	health = state.health
 	damage = state.damage
 	experience = state.experience
+	%ColorRect.hide()
 	# $WorldEnvironment.environment.glow_enabled = true
 
 func _physics_process(delta):
@@ -40,6 +41,9 @@ func action_pattern() -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	%HurtMarker.popup(amount)
+	$AnimationPlayer.play("hurt")
+	if player.hp_steal != 0:
+		player.hp +=  floori(player.hp_steal * amount / 100)
 	if health <= 0:
 		_on_death()
 		queue_free()

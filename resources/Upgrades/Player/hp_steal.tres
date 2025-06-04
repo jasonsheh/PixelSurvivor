@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Upgrade" load_steps=3 format=3 uid="uid://dh3klao5rqyo2"]
+
+[ext_resource type="Texture2D" uid="uid://bbayknev782fs" path="res://assets/Sprites/Icon/pretty-fangs.png" id="1_oh4p3"]
+[ext_resource type="Script" uid="uid://dltkf1jft0o8u" path="res://scripts/Upgrades/Upgrade.gd" id="1_wme3b"]
+
+[resource]
+script = ExtResource("1_wme3b")
+icon = ExtResource("1_oh4p3")
+rarity = "rare"
+type = "player"
+name = "Life Steal"
+desription = "生命偷取 +5%"
+metadata/_custom_type_script = "uid://dltkf1jft0o8u"

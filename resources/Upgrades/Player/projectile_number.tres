@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dpbgdenwmwpr4"]
+
+[ext_resource type="Texture2D" uid="uid://dj44qlnmgfny2" path="res://assets/Sprites/Icon/heavy-bullets.png" id="1_ylmhq"]
+[ext_resource type="Script" uid="uid://06yvkql51hdg" path="res://scripts/Upgrades/PlayerUpgrade/projectile_number.gd" id="2_ylmhq"]
+
+[resource]
+script = ExtResource("2_ylmhq")
+icon = ExtResource("1_ylmhq")
+rarity = "unique"
+type = "player"
+name = "Projectile Number"
+desription = "Unique
+投射物数量 +1"
+metadata/_custom_type_script = "uid://dltkf1jft0o8u"

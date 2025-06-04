@@ -8,6 +8,7 @@ extends ProgressBar
 
 func _ready():
 	max_value = %Player.max_exp
+	value = %Player.experience 
 	%Player.exp_changed.connect(_on_exp_changed)
 
 #func _process(delta):
@@ -25,3 +26,4 @@ func _ready():
 
 func _on_exp_changed():
 	value = %Player.experience
+	max_value = %Player.max_exp

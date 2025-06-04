@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4o4pi8wvpwn7"]
+[gd_scene load_steps=11 format=3 uid="uid://c4o4pi8wvpwn7"]
 
 [ext_resource type="Script" uid="uid://bwdyc1uf40uew" path="res://scenes/Charactor/enemy.gd" id="1_fjio4"]
 [ext_resource type="Texture2D" uid="uid://dqxrofomit2so" path="res://assets/Sprites/Enemy/circle-red.png" id="2_d1veo"]
@@ -12,6 +12,43 @@ size = Vector2(8, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7h6tc"]
 size = Vector2(8, 8)
 
+[sub_resource type="Animation" id="Animation_b158x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_iwoah"]
+resource_name = "hurt"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0rtk3"]
+_data = {
+&"RESET": SubResource("Animation_b158x"),
+&"hurt": SubResource("Animation_iwoah")
+}
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_fjio4")
@@ -23,9 +60,17 @@ script = ExtResource("4_iwoah")
 damage_node = ExtResource("5_b158x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+clip_children = 2
 position = Vector2(1.19209e-07, 1.19209e-07)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_d1veo")
+
+[node name="ColorRect" type="ColorRect" parent="Sprite2D"]
+unique_name_in_owner = true
+offset_left = -10.0
+offset_top = -12.0
+offset_right = 10.0
+offset_bottom = 12.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 2
@@ -40,5 +85,10 @@ shape = SubResource("RectangleShape2D_7h6tc")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_fjio4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0rtk3")
+}
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

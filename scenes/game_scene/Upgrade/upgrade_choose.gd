@@ -23,9 +23,15 @@ var player_upgrade_dict: Dictionary[String, Array] = {
 	"normal": [
 		preload("res://resources/Upgrades/Player/player_speed.tres"),
 	], 
-	"magic": [], 
-	"rare": [], 
-	"unique": [], 
+	"magic": [
+		preload("res://resources/Upgrades/Player/max_hp.tres"),
+	], 
+	"rare": [
+		preload("res://resources/Upgrades/Player/hp_steal.tres"),
+	], 
+	"unique": [
+		preload("res://resources/Upgrades/Player/projectile_number.tres"),
+	], 
 }
 
 var enemy_upgrade_dict: Dictionary[String, Array] = {
@@ -60,7 +66,6 @@ func get_upgrade() -> void:
 
 func get_player_upgrade() -> void:
 	var rarity: String = Utils.get_random_rarity(GlobalData.Rarity)
-	rarity =  "normal"
 	var choice: int = randi_range(0, player_upgrade_dict[rarity].size()-1)
 	upgrades.append(player_upgrade_dict[rarity][choice])
 

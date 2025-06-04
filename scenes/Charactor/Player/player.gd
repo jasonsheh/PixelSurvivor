@@ -27,6 +27,7 @@ const INIT_MAX_LEVEL: int = 50
 @export var max_hp: int = INIT_MAX_HP
 @export var hp: int = INIT_MAX_HP
 @export var hp_regen: int = INIT_HP_REGEN
+@export var hp_steal: int = 0
 
 @export var max_exp: int = INIT_MAX_EXP
 @export var experience: int = 0
@@ -78,6 +79,7 @@ func add_exp(e: int) -> void:
 	if experience >= max_exp:
 		experience -= max_exp
 		level_up()
+	
 	exp_changed.emit()
 
 

@@ -1,4 +1,4 @@
 extends Upgrade
 
 func apply_upgrade(player: Player):
-	player.projectile_number += 1
+	player.max_hp += 5

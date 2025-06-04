@@ -64,6 +64,7 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade1/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 8
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Upgrade1/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(128, 128)
@@ -77,6 +78,7 @@ stretch_mode = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 bbcode_enabled = true
 text = "{}
 投射物伤害 +1"
@@ -127,6 +129,7 @@ stretch_mode = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 bbcode_enabled = true
 text = "{}
 投射物伤害 +1"
@@ -177,6 +180,7 @@ stretch_mode = 4
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 bbcode_enabled = true
 text = "{}
 投射物伤害 +1"
