@@ -37,7 +37,7 @@ var player_upgrades: Array[Upgrade] = []
 var projectile_upgrades: Array[Upgrade] = []
 var enemy_upgrades: Array[Upgrade] = []
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	move_and_slide()
 	#velocity = Vector2.ZERO
 	

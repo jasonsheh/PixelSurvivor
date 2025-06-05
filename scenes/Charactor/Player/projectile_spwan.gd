@@ -38,7 +38,7 @@ func _on_body_entered(body: CharacterBody2D) -> void:
 func _on_attack_timer_timeout() -> void:
 	var target_pos = get_closest_target()
 	var arc_degree = player.projectile_number * 20 if player.projectile_number < 8 else 180 
-	var arc_radian =  deg_to_rad(player.projectile_number * 20)
+	var arc_radian =  deg_to_rad(arc_degree)
 	if target_pos != Vector2():
 		for i in player.projectile_number:
 			var projectile: ProjectileBase = projectile_scene.instantiate()

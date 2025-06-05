@@ -45,6 +45,7 @@ var enemy_upgrade_dict: Dictionary[String, Array] = {
 # 存储现有三个升级项
 var upgrades: Array[Upgrade] = []
 @onready var upgrade_labels: Array = [%Label1, %Label2, %Label3]
+@onready var upgrade_icons: Array[TextureRect] = [%Icon1, %Icon2, %Icon3]
 
 func _ready() -> void:
 	upgrades.clear()
@@ -94,6 +95,8 @@ func show_upgrade_info() -> void:
 			"desription": upgrades[i].desription,
 			"color": GlobalData.rarity_color[upgrades[i].rarity],
 		})
+		
+		upgrade_icons[i].texture = upgrades[i].icon
 
 
 func _on_upgrade_pressed(arg: int) -> void:

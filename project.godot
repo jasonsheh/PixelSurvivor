@@ -40,6 +40,7 @@ Player=""
 
 [gui]
 
+theme/custom="uid://b3kq74llqlv3x"
 common/drop_mouse_on_gui_input_disabled=true
 
 [input]

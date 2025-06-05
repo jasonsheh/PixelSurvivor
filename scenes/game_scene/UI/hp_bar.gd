@@ -7,7 +7,9 @@ extends ProgressBar
 # var _flash_timer := 0.0
 
 func _ready():
+	value = %Player.hp
 	max_value = %Player.max_hp
+	
 	$HpLabel.text = "%d / %d" % [value, max_value]
 	%Player.hp_changed.connect(_on_hp_changed)
 
@@ -26,4 +28,5 @@ func _ready():
 
 func _on_hp_changed():
 	value = %Player.hp
+	max_value = %Player.max_hp
 	$HpLabel.text = "%d / %d" % [value, max_value]
